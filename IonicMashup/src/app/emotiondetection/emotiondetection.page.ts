@@ -15,7 +15,7 @@ export class EmotiondetectionPage implements OnInit {
   ngOnInit() {
   }
   findEmotion() {
-    this.http.get('https://cors-anywhere.herokuapp.com/https://api.uclassify.com/v1/uClassify/Sentiment/classify/?readKey=DyLNsR66KSvN&text='+this.searchterm)
+    this.http.get('https://cors-anywhere.herokuapp.com/https://api.uclassify.com/v1/uClassify/Sentiment/classify/?readKey=DsdsdssdkvN&text='+this.searchterm)
         .subscribe(data => {
         this.searchResult = 'Positivity :' + data.positive;
 
