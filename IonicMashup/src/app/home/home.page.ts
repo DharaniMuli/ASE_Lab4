@@ -10,7 +10,7 @@ export class HomePage implements OnInit {
 
   searchterm: '';
   gender: string;
-  accuracy:string;
+  accuracy: string;
   constructor( private http: HttpClient ) { }
 
   ngOnInit() {
@@ -19,8 +19,10 @@ export class HomePage implements OnInit {
   checkGender() {
     const url = 'https://gender-api.com/get?name=' + this.searchterm + '&key=XJzxKUMnEXdfqDNhlp';
     this.http.get(url).subscribe(data => {
-        this.gender = 'The person with the given name is likely to be a ' + data.gender;
-        this.accuracy = 'Accuracy:' + data.accuracy;
+        // @ts-ignore
+      this.gender = 'The person with the given name is likely to be a ' + data.gender;
+        // @ts-ignore
+      this.accuracy = 'Accuracy:' + data.accuracy;
     });
   }
 }

@@ -10,6 +10,7 @@ export class LoginPage implements OnInit {
 
   user = { email: '', password: '' };
   InvalidUser = false;
+  enabled: boolean;
   constructor(private router: Router) { }
 
   ngOnInit() {
