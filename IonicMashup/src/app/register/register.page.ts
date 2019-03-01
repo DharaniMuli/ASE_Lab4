@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { auth } from 'firebase/app';
+import {computeMsgId} from '@angular/compiler/src/i18n/digest';
 
 @Component({
   selector: 'app-register',
@@ -7,31 +10,32 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegisterPage implements OnInit {
 
-  user = { fname: '', lname: '', email: '', password: '' };
+  firstname: string = ""
+  lastname: string = ""
+  email: string = ""
+  password: string = ""
+  cpassword:string = ""
 
-  constructor() {
-    this.resetuser();
+
+  constructor( public afAuth: AngularFireAuth ) {
   }
 
   ngOnInit() {
   }
 
   register() {
-    let userInfo = {
-      'firstname' : this.user.fname,
-      'lastname' : this.user.lname,
-      'username' : this.user.email,
-      'password' : this.user.password
+    const {firstname, lastname, email, password, cpassword } = this
+    if (password !== cpassword) {
+      return console.error("Password don't match");
     }
-    // localStorage supported
-    if (window.localStorage) {
-      localStorage.setItem(userInfo.username, JSON.stringify(userInfo));
-      this.resetuser();
+    try{
+      const result = this.afAuth.auth.createUserWithEmailAndPassword(email, password)
+      console.log(result);
+    }
+    catch(err) {
+      console.dir(err);
     }
 
   }
-  resetuser() {
-    this.user = { fname: '', lname: '', email: '', password: '' };
 
-  }
 }
