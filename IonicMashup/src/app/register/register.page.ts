@@ -28,7 +28,8 @@ export class RegisterPage implements OnInit {
     if (password !== cpassword) {
       return console.error("Password don't match");
     }
-    try{
+    try
+    {
       const result = this.afAuth.auth.createUserWithEmailAndPassword(email, password)
       console.log(result);
     }
