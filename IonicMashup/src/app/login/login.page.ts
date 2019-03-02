@@ -13,8 +13,8 @@ export class LoginPage implements OnInit {
   email: string = ""
   password: string =""
   InvalidUser = false;
-  constructor(private router: Router, public afAuth: AngularFireAuth) { }
 
+  constructor(private router: Router, public afAuth: AngularFireAuth) { }
   ngOnInit() {
   }
 
